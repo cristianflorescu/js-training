@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>Course 3 - Small Problems</title>
+  <title>Course 4 - Inheritance & Ajax</title>
   <style type="text/css">
     #drawingCnt{
       width: 100%;
@@ -45,6 +45,7 @@
               <option value="Circle">Circle</option>
               <option value="Rectangle">Rectangle</option>
               <option value="Square">Square</option>
+              <option value="Line">Line</option>
             </select>
           </div>
         </div>
@@ -111,7 +112,39 @@
             <div class="input-group-prepend">
               <span class="input-group-text">Width:</span>
             </div>
-            <input type="text" class="form-control" id="sqWidth" />
+            <input type="text" class="form-control" id="sqSize" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row attr d-none" id="attrLine">
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">X2:</span>
+            </div>
+            <input type="text" class="form-control" id="lineX2" />
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Y2:</span>
+            </div>
+            <input type="text" class="form-control" id="lineY2" />
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Line width:</span>
+            </div>
+            <input type="text" class="form-control" id="lineWidth" />
           </div>
         </div>
       </div>
@@ -119,6 +152,7 @@
     <div class="row">
       <div class="col">
         <button class="btn btn-primary d-none" type="button" id="addShape">Add</button>
+        <button class="btn btn-danger" type="button" id="clear">Clear</button>
       </div>
     </div>
     <div class="row">

@@ -1,4 +1,5 @@
 {
+  "extends": "eslint:recommended",
   "env": {
     "node": true,
     "browser": true,
@@ -47,6 +48,7 @@
     "$": true,
     "updateWord": true,
     "updateFailTriesCount": true,
-    "startGame": true
+    "startGame": true,
+    "axios": true
   }
 }

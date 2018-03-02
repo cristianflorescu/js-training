@@ -15,7 +15,7 @@ let leapYear = function() {
   // calculate the output
   let output = 'No';
   if (0 === input % 400 || (0 === input % 4 && 0 !== input % 100)) {
-    output = 'Yes'
+    output = 'Yes';
   }
   // set the output value
   setOutputValue(this, output);
@@ -32,6 +32,7 @@ let fibonacci = function() {
     }
     // stop condition
     if (n === 0 || n === 1) {
+      memo[n] = n;
       return n;
     }
     // calculate
@@ -45,7 +46,7 @@ let fibonacci = function() {
   setOutputValue(this, output);
 };
 
-String.prototype.reverse = function() {
+String.prototype.reverseStr = function() {
   return this.split('').reverse().join('')
 };
 
@@ -53,11 +54,10 @@ let reverse = function() {
   // read the input value
   let input = getInputValue(this);
   // calculate the output
-  let output = input.reverse();
+  let output = input.reverseStr();
   // set the output value
   setOutputValue(this, output);
 };
-
 
 let Palindrome = function() {
   this.removeSpaces = function(input) {
@@ -69,7 +69,7 @@ Palindrome.prototype.check = function(input) {
   // prepare the input value
   input = this.removeSpaces(input);
   // calculate the output
-  return input.reverse === input;
+  return input.reverseStr() === input;
 }
 
 // Register click handlers
@@ -83,4 +83,9 @@ let palindrome = new Palindrome();
 document.getElementById('palindromeBtn').onclick = function() {
   let isPalindrome = palindrome.check(getInputValue(this));
   setOutputValue(this, isPalindrome ? 'Yes' : 'No');
+  // other solution
+  // let input = getInputValue(this).replace(/\s/, '');
+  // calculate the output
+  // setOutputValue(this, input.reverseStr() === input ? 'Yes' : 'No');
+  // ternary operator var test = (condition) ? {statement if true} : {statement if false}
 };
