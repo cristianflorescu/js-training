@@ -47,6 +47,26 @@ Circle.prototype.drawFrame = function () {
   ctx.fill();
 };
 
+// Arc constructor
+function Arc(x, y, r, startAngle, endAngle, counterClockwise, lineWidth = 10, strokeStyle = 'blue') {
+  Shape.call(this, x, y);
+  this.r = r;
+  this.startAngle = startAngle * (Math.PI/180);
+  this.endAngle = endAngle * (Math.PI/180);
+  this.counterClockWise = counterClockwise;
+};
+// Arc extends Shape
+Arc.prototype = Object.create(Shape.prototype);
+//extend the drawFrame
+Arc.prototype.drawFrame = function() {
+  ctx.fillStyle = this.fill;
+  ctx.beginPath();
+  ctx.arc(this.x, this.y, this.arcR, this.startAngle, this.endAngle, this.counterClockWise);
+  ctx.lineWidth = this.lineWidth;
+  ctx.strokeStyle = this.strokeStyle;
+  ctx.stroke();
+}
+
 // Rectangle "constructor"
 function Rectangle(x, y, width, height, fill = 'rgba(0, 0, 200, 0.5)') {
   // call the shape constructor
@@ -102,6 +122,8 @@ function createShape(shape) {
   switch (shape.type) {
     case 'Circle':
       return new Circle(shape.x, shape.y, shape.r);
+    case 'Arc':
+      return new Arc(shape.x, shape.y, shape.r, shape.startAngle, shape.endAngle, shape.counterClockWise);
     case 'Rectangle':
       return new Rectangle(shape.x, shape.y, shape.width, shape.height);
     case 'Square':
@@ -194,6 +216,23 @@ addShapeBtn.addEventListener('click', function() {
       });
       circle.draw();
       break;
+      case 'Arc':
+          // circle also has a radius
+          let arcR = document.getElementById('arcR').value;
+          let startAngle = document.getElementById('startAngle').value;
+          let endAngle = document.getElementById('endAngle').value;
+          // create and draw the shape
+          let arc = createShape({
+              type: shapeTypeSelect.value,
+              x,
+              y,
+              r:arcR,
+              startAngle,
+              endAngle,
+              counterClockWise:"false"
+          });
+          arc.draw();
+          break;
     case 'Rectangle':
       // rectangle has width and height
       let width = document.getElementById('rectWidth').value;
